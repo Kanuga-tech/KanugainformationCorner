@@ -159,18 +159,45 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             border: 1px solid #bbdefb;
         }
+        .tuition-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.3);
+            transition: background 0.2s ease;
+        }
+        .tuition-header:hover {
+            background: rgba(255,255,255,0.5);
+        }
         .tuition-section h3 {
-            margin: 0 0 10px 0;
+            margin: 0;
             font-size: 1em;
             color: #1565c0;
             text-align: center;
+        }
+        .toggle-arrow {
+            font-size: 1.2em;
+            color: #1565c0;
+            transition: transform 0.3s ease;
+        }
+        .toggle-arrow.expanded {
+            transform: rotate(180deg);
         }
         .tuition-content {
             background: rgba(255,255,255,0.8);
             padding: 12px;
             border-radius: 8px;
             border: 1px solid #bbdefb;
-            max-height: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        .tuition-content.expanded {
+            max-height: 2000px;
+            padding: 12px;
         }
         .course-fees h4 {
             margin: 0 0 8px 0;
@@ -329,6 +356,58 @@
             0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
             100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
+        
+        .footer {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .powered-by {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.2s ease;
+        }
+        .social-link:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-1px);
+        }
+        .social-icon {
+            font-size: 1.2em;
+        }
+        
+        .kanuga-initiative {
+            font-style: italic;
+            font-size: 0.7em;
+            color: #6c757d;
+            margin-top: 5px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -351,7 +430,7 @@
             <h2>YEAR 1 STUDENT INFORMATION</h2>
 
             <div class="nav-bar">
-                <a href="home.html" class="nav-button">🏠 Main Hub</a>
+                <a href="index.html" class="nav-button">🏠 Main Hub</a>
                 <a href="year1.html" class="nav-button active">📚 Year 1</a>
                 <a href="year2.html" class="nav-button">📚 Year 2</a>
                 <a href="year3.html" class="nav-button">📚 Year 3</a>
@@ -367,11 +446,14 @@
             </div>
 
             <div class="tuition-section">
-                <h3>💰 TUITION FEES 2025/2026</h3>
-                <div style="text-align: center; margin-bottom: 8px; color: #1565c0; font-size: 0.7em; font-style: italic;">
-                    (Tap your course to see detailed tuition structure)
+                <div class="tuition-header" onclick="toggleTuition()">
+                    <h3>💰 TUITION FEES 2025/2026</h3>
+                    <span class="toggle-arrow" id="tuitionArrow">▼</span>
                 </div>
-                <div class="tuition-content">
+                <div class="tuition-content" id="tuitionContent">
+                    <div style="text-align: center; margin-bottom: 8px; color: #1565c0; font-size: 0.7em; font-style: italic;">
+                        (Tap your course to see detailed tuition structure)
+                    </div>
                     <div class="course-list">
                         <h4>🎓 ALL FIRST YEAR COURSES</h4>
                         <div class="course-group"><strong>Certificate Programs</strong>
@@ -613,26 +695,32 @@
                 <div class="info-section">
                     <h3>📚 COURSE REGISTRATION</h3>
                     <p>Register for your first-year courses and get academic guidance</p>
+                    <div class="kanuga-initiative">a_kanuga_initiative</div>
                 </div>
                 <div class="info-section">
                     <h3>📋 ACADEMIC CALENDAR</h3>
                     <p>Important dates, deadlines, and semester schedules</p>
+                    <div class="kanuga-initiative">a_kanuga_initiative</div>
                 </div>
                 <div class="info-section">
                     <h3>🏠 STUDENT HOUSING</h3>
                     <p>Accommodation options, applications, and housing policies</p>
+                    <div class="kanuga-initiative">a_kanuga_initiative</div>
                 </div>
                 <div class="info-section">
                     <h3>📖 STUDY RESOURCES</h3>
                     <p>Library access, study materials, and academic support</p>
+                    <div class="kanuga-initiative">a_kanuga_initiative</div>
                 </div>
                 <div class="info-section">
                     <h3>🎯 FIRST YEAR SUPPORT</h3>
                     <p>Mentoring programs, study groups, and transition support</p>
+                    <div class="kanuga-initiative">a_kanuga_initiative</div>
                 </div>
                 <div class="info-section">
                     <h3>📞 CONTACT FINANCE</h3>
                     <p>Get help with payment plans and financial queries</p>
+                    <div class="kanuga-initiative">a_kanuga_initiative</div>
                 </div>
             </div>
         </div>
@@ -1087,7 +1175,38 @@
                 console.log('Scrolling to bottom of page');
             }
         }
+        
+        function toggleTuition() {
+            const content = document.getElementById('tuitionContent');
+            const arrow = document.getElementById('tuitionArrow');
+            
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                arrow.classList.remove('expanded');
+                arrow.textContent = '▼';
+            } else {
+                content.classList.add('expanded');
+                arrow.classList.add('expanded');
+                arrow.textContent = '▲';
+            }
+        }
     </script>
+
+    <div class="footer">
+        <div class="footer-content">
+            <div class="powered-by">Powered by Mbabazi Francis Kanuga</div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/mr_pres.ident?igsh=MWdsdmxkYXVvbWtxMg%3D%3D&utm_source=qr" class="social-link" target="_blank">
+                    <span class="social-icon">📷</span>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://www.tiktok.com/@mr_pres.ident?_t=ZM-8yLTYQ986fY&_r=1" class="social-link" target="_blank">
+                    <span class="social-icon">🎵</span>
+                    <span>TikTok</span>
+                </a>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html> 
