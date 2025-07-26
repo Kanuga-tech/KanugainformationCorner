@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orientation Programme - Navigation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.2;
+            margin: 2px;
+            padding: 0;
+            background: linear-gradient(135deg, #2E8B57, #228B22, #32CD32);
+            height: 100vh;
+            overflow: hidden;
+        }
+        .program-container {
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            margin: 2px;
+            height: calc(100vh - 10px);
+            overflow: hidden;
+            border: 2px solid #228B22;
+        }
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDQwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiBmaWxsPSIjRkZGRkZGIi8+CjxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTUwIiBmaWxsPSIjRkZGRkZGIiBmaWxsLW9wYWNpdHk9IjAuMSIvPgo8L3N2Zz4K');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.08;
+            z-index: 0;
+            filter: blur(1px);
+        }
+        
+        .content {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 10px;
+            padding: 15px;
+            backdrop-filter: blur(2px);
+        }
+        h2 {
+            text-align: center;
+            color: #2E8B57;
+            margin-bottom: 6px;
+            font-size: 1.1em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .nav-link {
+            background: linear-gradient(135deg, #228B22, #32CD32);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
+        }
+        .nav-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        .nav-link:active {
+            transform: translateY(0);
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="program-container">
+        <div class="background-overlay"></div>
+        <div class="content">
+            <div style="text-align: center; margin-bottom: 8px;">
+                <div style="background: linear-gradient(135deg, #1a4d1a, #2d5a2d, #3d7a3d, #4d9a4d); color: #ffffff; padding: 8px; border-radius: 15px; margin-bottom: 6px; border: 3px solid #FFD700; box-shadow: 0 8px 25px rgba(0,0,0,0.4); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%); animation: shine 3s infinite;"></div>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; position: relative; z-index: 1;">
+                        <img src="Kanuga.png" alt="Kanuga" style="width: 120px; height: 120px; border-radius: 8px; border: 4px solid #FFD700; box-shadow: 0 6px 20px rgba(0,0,0,0.4); object-fit: cover;">
+                        <div style="text-align: left;">
+                            <h3 style="color: #ffffff; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); font-size: 1.2em; font-weight: bold; letter-spacing: 1px; line-height: 1.2;">🌟 KANUGA'S INFORMATION CORNER 🌟</h3>
+                            <div style="font-size: 0.85em; margin-top: 3px; color: #FFD700; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">Your Gateway to Academic Excellence</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h2>ORIENTATION PROGRAM NAVIGATION</h2>
+
+            <div class="nav-links">
+                <a href="day1and2.html" class="nav-link">
+                    📅 DAYS 1 & 2<br>
+                    <small>Getting Started & Faculty Introductions</small>
+                </a>
+                <a href="day3and4.html" class="nav-link">
+                    📅 DAYS 3 & 4<br>
+                    <small>Essential Services & E-Learning Prep</small>
+                </a>
+                <a href="day5and6.html" class="nav-link">
+                    📅 DAYS 5 & 6<br>
+                    <small>Student Life & Lecture Commencement</small>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html> 

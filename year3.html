@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year 3 Information - Kanuga's Information Corner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.2;
+            margin: 2px;
+            padding: 0;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef, #dee2e6);
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+        .program-container {
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.98);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            margin: 2px;
+            min-height: calc(100vh - 10px);
+            overflow-y: auto;
+            border: 2px solid #6c757d;
+        }
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDQwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiBmaWxsPSIjRkZGRkZGIi8+CjxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTUwIiBmaWxsPSIjRkZGRkZGIiBmaWxsLW9wYWNpdHk9IjAuMSIvPgo8L3N2Zz4K');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.08;
+            z-index: 0;
+            filter: blur(1px);
+        }
+        
+        .content {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 10px;
+            padding: 15px;
+            backdrop-filter: blur(2px);
+        }
+        h2 {
+            text-align: center;
+            color: #495057;
+            margin-bottom: 6px;
+            font-size: 1.1em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+        
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        .nav-button {
+            background: #28a745;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.7em;
+            font-weight: bold;
+            border: 1px solid #28a745;
+            transition: all 0.2s ease;
+        }
+        .nav-button:hover, .nav-button.active {
+            background: #218838;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .info-section {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            color: #495057;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #dee2e6;
+            transition: transform 0.2s ease;
+        }
+        .info-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+        .info-section h3 {
+            margin: 0 0 8px 0;
+            font-size: 0.9em;
+            color: #28a745;
+            text-shadow: none;
+        }
+        .info-section p {
+            margin: 0;
+            font-size: 0.8em;
+            opacity: 0.8;
+            color: #6c757d;
+        }
+        
+        .graduation-section {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            color: #495057;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #dee2e6;
+        }
+        .graduation-section h3 {
+            margin: 0 0 10px 0;
+            font-size: 1em;
+            color: #28a745;
+            text-align: center;
+        }
+        .graduation-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        .graduation-link {
+            background: #28a745;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.75em;
+            font-weight: bold;
+            border: 1px solid #28a745;
+            transition: all 0.2s ease;
+        }
+        .graduation-link:hover {
+            background: #218838;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+        }
+        
+        .tuition-section {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            color: #1565c0;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #bbdefb;
+        }
+        .tuition-section h3 {
+            margin: 0 0 10px 0;
+            font-size: 1em;
+            color: #1565c0;
+            text-align: center;
+        }
+        .tuition-content {
+            background: rgba(255,255,255,0.8);
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #bbdefb;
+        }
+        .course-fees h4 {
+            margin: 0 0 8px 0;
+            font-size: 0.9em;
+            color: #1976d2;
+            text-align: center;
+        }
+        .fee-category {
+            margin-bottom: 12px;
+            padding: 8px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 6px;
+            border-left: 3px solid #2196f3;
+        }
+        .fee-category h5 {
+            margin: 0 0 6px 0;
+            font-size: 0.8em;
+            color: #1565c0;
+        }
+        .fee-details p {
+            margin: 0 0 4px 0;
+            font-size: 0.75em;
+            color: #424242;
+        }
+        .payment-info {
+            margin-top: 12px;
+            padding: 8px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 6px;
+            border-left: 3px solid #4caf50;
+        }
+        .payment-info h4 {
+            margin: 0 0 6px 0;
+            font-size: 0.85em;
+            color: #2e7d32;
+        }
+        .payment-info ul {
+            margin: 0;
+            padding-left: 16px;
+        }
+        .payment-info li {
+            font-size: 0.75em;
+            color: #424242;
+            margin-bottom: 3px;
+        }
+        .graduation-fees {
+            margin-top: 12px;
+            padding: 8px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 6px;
+            border-left: 3px solid #ff9800;
+        }
+        .graduation-fees h4 {
+            margin: 0 0 6px 0;
+            font-size: 0.85em;
+            color: #f57c00;
+        }
+        .graduation-fees ul {
+            margin: 0;
+            padding-left: 16px;
+        }
+        .graduation-fees li {
+            font-size: 0.75em;
+            color: #424242;
+            margin-bottom: 3px;
+        }
+        .functional-fees {
+            margin-top: 12px;
+            padding: 8px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 6px;
+            border-left: 3px solid #9c27b0;
+        }
+        .functional-fees h4 {
+            margin: 0 0 6px 0;
+            font-size: 0.85em;
+            color: #7b1fa2;
+        }
+        .functional-fees ul {
+            margin: 0;
+            padding-left: 16px;
+        }
+        .functional-fees li {
+            font-size: 0.75em;
+            color: #424242;
+            margin-bottom: 3px;
+        }
+        
+        .course-list h4 {
+            margin: 0 0 8px 0;
+            font-size: 0.9em;
+            color: #1976d2;
+            text-align: center;
+        }
+        
+        .course-item {
+            margin-bottom: 8px;
+            padding: 8px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 6px;
+            border-left: 3px solid #2196f3;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .course-item:hover {
+            background: rgba(255,255,255,0.8);
+            transform: translateX(2px);
+            box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+        }
+        
+        .course-item h5 {
+            margin: 0 0 4px 0;
+            font-size: 0.8em;
+            color: #1565c0;
+        }
+        
+        .modal {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            margin: 5% auto;
+            padding: 15px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            border: 2px solid #2196f3;
+        }
+        
+        .close {
+            color: #1565c0;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: #0d47a1;
+        }
+        
+        .course-details {
+            background: rgba(255,255,255,0.9);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        
+        .course-details h4 {
+            margin: 0 0 8px 0;
+            font-size: 0.9em;
+            color: #1565c0;
+            text-align: center;
+        }
+        
+        .course-details .fee-details p {
+            margin: 0 0 4px 0;
+            font-size: 0.75em;
+            color: #424242;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="program-container">
+        <div class="background-overlay"></div>
+        <div class="content">
+            <div style="text-align: center; margin-bottom: 8px;">
+                <div style="background: linear-gradient(135deg, #28a745, #20c997, #17a2b8, #6f42c1); color: #ffffff; padding: 8px; border-radius: 15px; margin-bottom: 6px; border: 3px solid #FFD700; box-shadow: 0 4px 15px rgba(0,0,0,0.2); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%); animation: shine 3s infinite;"></div>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; position: relative; z-index: 1;">
+                        <img src="Kanuga.png" alt="Kanuga" style="width: 120px; height: 120px; border-radius: 8px; border: 4px solid #FFD700; box-shadow: 0 6px 20px rgba(0,0,0,0.4); object-fit: cover;">
+                        <div style="text-align: left;">
+                            <h3 style="color: #ffffff; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); font-size: 1.2em; font-weight: bold; letter-spacing: 1px; line-height: 1.2;">🌟 KANUGA'S INFORMATION CORNER 🌟</h3>
+                            <div style="font-size: 0.85em; margin-top: 3px; color: #FFD700; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">Your Gateway to Academic Excellence</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h2>YEAR 3 STUDENT INFORMATION</h2>
+
+            <div class="nav-bar">
+                <a href="home.html" class="nav-button">🏠 Main Hub</a>
+                <a href="year1.html" class="nav-button">📚 Year 1</a>
+                <a href="year2.html" class="nav-button">📚 Year 2</a>
+                <a href="year3.html" class="nav-button active">📚 Year 3</a>
+            </div>
+
+            <div class="graduation-section">
+                <h3>🎓 GRADUATION PREPARATION 2025/2026</h3>
+                <div class="graduation-links">
+                    <a href="#" class="graduation-link">📋 Graduation Requirements</a>
+                    <a href="#" class="graduation-link">📝 Final Year Project</a>
+                    <a href="#" class="graduation-link">🎓 Graduation Ceremony</a>
+                    <a href="#" class="graduation-link">📄 Transcript Requests</a>
+                </div>
+            </div>
+
+            <div class="tuition-section">
+                <h3>💰 TUITION FEES 2025/2026</h3>
+                <div style="text-align: center; margin-bottom: 8px; color: #1565c0; font-size: 0.7em; font-style: italic;">
+                    (Tap your course to see detailed tuition structure)
+                </div>
+                <div class="tuition-content">
+                    <div class="course-list">
+                        <h4>🎓 ALL THIRD YEAR COURSES</h4>
+                        <div class="course-group"><strong>Certificate Programs</strong>
+                            <div class="course-item" onclick="showCourseDetails('national-cert')">
+                                <h5>National Certificate in Business Administration (UBTEB)</h5>
+                                <p class="course-abbr">NCBA</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('hecbs')">
+                                <h5>Higher Education Certificate in Business Studies</h5>
+                                <p class="course-abbr">HECBS</p>
+                            </div>
+                        </div>
+                        <div class="course-group"><strong>Diploma Programs</strong>
+                            <div class="course-item" onclick="showCourseDetails('diploma-bus-admin')">
+                                <h5>Diploma in Business Administration</h5>
+                                <p class="course-abbr">DBA</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('diploma-bus-intel')">
+                                <h5>Diploma in Business Intelligence & Data Analysis</h5>
+                                <p class="course-abbr">DBIDA</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('diploma-comp-sci')">
+                                <h5>Diploma in Computer Science</h5>
+                                <p class="course-abbr">DCS</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('diploma-acc-fin')">
+                                <h5>Diploma in Accounting & Finance</h5>
+                                <p class="course-abbr">DAF</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('diploma-hotel')">
+                                <h5>Diploma in Hotel and Restaurant Management</h5>
+                                <p class="course-abbr">DHRM</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('diploma-proc-log')">
+                                <h5>Diploma in Procurement & Logistics Management</h5>
+                                <p class="course-abbr">DPLM</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('diploma-proc-supply')">
+                                <h5>Diploma in Procurement & Supply Chain Management</h5>
+                                <p class="course-abbr">DPSCM</p>
+                            </div>
+                        </div>
+                        <div class="course-group"><strong>Bachelor’s Degrees</strong>
+                            <div class="course-item" onclick="showCourseDetails('bba')">
+                                <h5>Bachelor of Business Administration</h5>
+                                <p class="course-abbr">BBA</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('bbc')">
+                                <h5>Bachelor of Business Computing</h5>
+                                <p class="course-abbr">BBC</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('bbs')">
+                                <h5>Bachelor of Business Statistics</h5>
+                                <p class="course-abbr">BBS</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('bcom')">
+                                <h5>Bachelor of Commerce</h5>
+                                <p class="course-abbr">BCOM</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('bae')">
+                                <h5>Bachelor of Arts in Economics</h5>
+                                <p class="course-abbr">BAE</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('bent')">
+                                <h5>Bachelor of Entrepreneurship</h5>
+                                <p class="course-abbr">BENT</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('bhrm')">
+                                <h5>Bachelor of Human Resource Management</h5>
+                                <p class="course-abbr">BHRM</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('bib')">
+                                <h5>Bachelor of International Business</h5>
+                                <p class="course-abbr">BIB</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('blg')">
+                                <h5>Bachelor of Leadership & Governance</h5>
+                                <p class="course-abbr">BLG</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('blehm')">
+                                <h5>Bachelor of Leisure, Events & Hotel Management</h5>
+                                <p class="course-abbr">BLEHM</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('bmark')">
+                                <h5>Bachelor of Marketing</h5>
+                                <p class="course-abbr">BMKT</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('boim')">
+                                <h5>Bachelor of Office & Information Management</h5>
+                                <p class="course-abbr">BOIM</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('bpscm')">
+                                <h5>Bachelor of Procurement & Supply Chain Management</h5>
+                                <p class="course-abbr">BPSCM</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('brem')">
+                                <h5>Bachelor of Real Estate Management</h5>
+                                <p class="course-abbr">BREM</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('bacc')">
+                                <h5>Bachelor of Science in Accounting</h5>
+                                <p class="course-abbr">BSc. ACC</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('bfin')">
+                                <h5>Bachelor of Science in Finance</h5>
+                                <p class="course-abbr">BSc. FIN</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('btlm')">
+                                <h5>Bachelor of Transport & Logistics Management</h5>
+                                <p class="course-abbr">BTLM</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('bttm')">
+                                <h5>Bachelor of Travel & Tourism Management</h5>
+                                <p class="course-abbr">BTTM</p>
+                            </div>
+                        </div>
+                        <div class="course-group"><strong>Postgraduate Diplomas</strong>
+                            <div class="course-item" onclick="showCourseDetails('pgdbe')">
+                                <h5>Postgraduate Diploma in Business Education</h5>
+                                <p class="course-abbr">PGDBE</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('pgdbida')">
+                                <h5>Postgraduate Diploma in Business Intelligence & Data Analysis</h5>
+                                <p class="course-abbr">PGDBIDA</p>
+                            </div>
+                        </div>
+                        <div class="course-group"><strong>Master’s Degrees</strong>
+                            <div class="course-item" onclick="showCourseDetails('maepm')">
+                                <h5>Master of Arts in Economic Policy & Management</h5>
+                                <p class="course-abbr">MAEPM</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('mba-evening')">
+                                <h5>Master of Business Administration (Evening)</h5>
+                                <p class="course-abbr">MBA (Evening)</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('mba-modular')">
+                                <h5>Master of Business Administration (Modular)</h5>
+                                <p class="course-abbr">MBA (Modular)</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('mbpsych')">
+                                <h5>Master of Business Psychology</h5>
+                                <p class="course-abbr">MBPsych</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('meeg')">
+                                <h5>Master of Energy, Economics & Governance</h5>
+                                <p class="course-abbr">MEEG</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('ment')">
+                                <h5>Master of Entrepreneurship & Innovation</h5>
+                                <p class="course-abbr">MENT</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('mhtm')">
+                                <h5>Master of Hospitality & Tourism Management</h5>
+                                <p class="course-abbr">MHTM</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('mhrm')">
+                                <h5>Master of Human Resource Management</h5>
+                                <p class="course-abbr">MHRM</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('mib')">
+                                <h5>Master of International Business</h5>
+                                <p class="course-abbr">MIB</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('mlg')">
+                                <h5>Master of Leadership & Governance</h5>
+                                <p class="course-abbr">MLG</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('mmkt')">
+                                <h5>Master of Marketing</h5>
+                                <p class="course-abbr">MMKT</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('mpscm')">
+                                <h5>Master of Procurement & Supply Chain Management</h5>
+                                <p class="course-abbr">MPSCM</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('msaf')">
+                                <h5>Master of Science in Accounting & Finance</h5>
+                                <p class="course-abbr">MSAF</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('msbim')">
+                                <h5>Master of Science in Banking & Investment Management</h5>
+                                <p class="course-abbr">MSBIM</p>
+                            </div>
+                        </div>
+                        <div class="course-group"><strong>Doctoral (PhD) Degrees</strong>
+                            <div class="course-item" onclick="showCourseDetails('phd')">
+                                <h5>Doctor of Philosophy Degree</h5>
+                                <p class="course-abbr">PhD</p>
+                            </div>
+                            <div class="course-item" onclick="showCourseDetails('phd-eeg')">
+                                <h5>PhD in Energy, Economics and Governance</h5>
+                                <p class="course-abbr">PhD (EEG)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="payment-info">
+                        <h4>💳 PAYMENT INFORMATION</h4>
+                        <ul>
+                            <li>All fees payable at beginning of academic year</li>
+                            <li>Installments: 100% functional fees + 60% tuition fees</li>
+                            <li>Deadline: 6th week of semester</li>
+                            <li>Late registration: 57,500 shs</li>
+                            <li>Retake fee: 20,000 shs per paper</li>
+                            <li>Payment via URA using PRN from myportal.mubs.ac.ug</li>
+                        </ul>
+                    </div>
+
+                    <div class="functional-fees">
+                        <h4>🏛️ GOVERNMENT STUDENTS - FUNCTIONAL FEES</h4>
+                        <ul>
+                            <li>Medical fee: 100,000 shs</li>
+                            <li>Identity Card: 45,000 shs</li>
+                            <li>Library fee: 26,000 shs</li>
+                            <li>Sports fees: 20,000 shs</li>
+                            <li>Guild fee: 13,000 shs</li>
+                            <li>Rules & Caution: 3,000 shs</li>
+                            <li>Endowment: 13,000 shs</li>
+                            <li>Research fee: 26,000 shs</li>
+                            <li><strong>Total Functional Fees: 246,000 shs</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Details Modal -->
+            <div id="courseModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <div id="courseDetails"></div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 8px 0; color: #1565c0; font-size: 0.8em; font-weight: bold; padding: 8px; background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-radius: 8px; cursor: pointer; border: 2px solid #2196f3; box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);" onclick="scrollToInfo()">
+                🔽 TAP TO SCROLL TO MORE INFORMATION 🔽
+            </div>
+
+            <div class="info-grid">
+                <div class="info-section">
+                    <h3>📚 FINAL YEAR COURSES</h3>
+                    <p>Complete your degree requirements and final semester courses</p>
+                </div>
+                <div class="info-section">
+                    <h3>🎯 CAREER TRANSITION</h3>
+                    <p>Job placement, graduate school applications, and career fairs</p>
+                </div>
+                <div class="info-section">
+                    <h3>📖 THESIS & RESEARCH</h3>
+                    <p>Final year project, thesis writing, and research support</p>
+                </div>
+                <div class="info-section">
+                    <h3>👥 ALUMNI NETWORK</h3>
+                    <p>Connect with alumni, networking events, and mentorship</p>
+                </div>
+                <div class="info-section">
+                    <h3>🎓 POST-GRADUATION</h3>
+                    <p>Graduate school, professional certifications, and further studies</p>
+                </div>
+                <div class="info-section">
+                    <h3>📞 CONTACT FINANCE</h3>
+                    <p>Get help with payment plans and financial queries</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Placeholder for course details data
+                 const courseDetails = {
+             'bba': {
+                 name: 'BBA (Bachelor of Business Administration)',
+                 fees: [
+                     { semester: 'Semester 1', amount: 2369000 },
+                     { semester: 'Semester 2', amount: 1615000 },
+                     { semester: 'Annual Total', amount: 3984000 }
+                 ]
+             },
+             'boim-bbc': {
+                 name: 'BOIM, BBC (Bachelor of Office and Information Management, Bachelor of Business Computing)',
+                 fees: [
+                     { semester: 'Semester 1', amount: 2375500 },
+                     { semester: 'Semester 2', amount: 1621500 },
+                     { semester: 'Annual Total', amount: 3997000 }
+                 ]
+             },
+             'besbm-accounting-marketing': {
+                 name: 'BESBM, BSc. ACCOUNTING, BSc. MARKETING, BAE, BEN & BBS',
+                 fees: [
+                     { semester: 'Semester 1', amount: 2234000 },
+                     { semester: 'Semester 2', amount: 1480000 },
+                     { semester: 'Annual Total', amount: 3714000 }
+                 ]
+             },
+             'diploma-final-year': {
+                 name: 'Diploma Programs (Final Year)',
+                 fees: [
+                     { semester: 'Semester 1', amount: 1450700 },
+                     { semester: 'Semester 2', amount: 820800 },
+                     { semester: 'Annual Total', amount: 2271500 }
+                 ]
+             },
+             'hecbs-y3': {
+                 name: 'Higher Education Certificate in Business Studies (HECBS)',
+                 fees: [
+                     { semester: 'Semester 1', amount: 1394700 },
+                     { semester: 'Semester 2', amount: 764800 },
+                     { semester: 'Annual Total', amount: 2159500 }
+                 ]
+             },
+             'national-cert-y3': {
+                 name: 'National Certificate in Business Administration (CBM-UBTEB)',
+                 fees: [
+                     { semester: 'Semester 1', amount: 985400 },
+                     { semester: 'Semester 2', amount: 458500 },
+                     { semester: 'Annual Total', amount: 1649900 }
+                 ]
+             }
+         };
+
+        function showCourseDetails(courseId) {
+            const modal = document.getElementById('courseModal');
+            const courseDetailsDiv = document.getElementById('courseDetails');
+            const course = courseDetails[courseId];
+
+            if (course) {
+                let html = `<h3>${course.name}</h3>`;
+                html += '<ul>';
+                course.fees.forEach(fee => {
+                    html += `<li><strong>${fee.semester}:</strong> ${fee.amount.toLocaleString()} shs</li>`;
+                });
+                html += '</ul>';
+                courseDetailsDiv.innerHTML = html;
+                modal.style.display = 'block';
+            } else {
+                courseDetailsDiv.innerHTML = 'No specific tuition details available for this course.';
+                modal.style.display = 'block';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('courseModal').style.display = 'none';
+        }
+
+                 // Close modal when clicking outside the modal content
+         window.onclick = function(event) {
+             const modal = document.getElementById('courseModal');
+             if (event.target == modal) {
+                 modal.style.display = 'none';
+             }
+         }
+         
+         function scrollToInfo() {
+             const infoGrid = document.querySelector('.info-grid');
+             if (infoGrid) {
+                 infoGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+             } else {
+                 // Fallback: scroll to bottom of page
+                 window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+             }
+         }
+    </script>
+</body>
+</html> 
